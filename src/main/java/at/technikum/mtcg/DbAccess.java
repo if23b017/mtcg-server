@@ -12,4 +12,23 @@ public class DbAccess {
     public static Connection connect() throws SQLException {
         return DriverManager.getConnection(URL, USER, PASSWORD);
     }
+    public static void main(String[] args) {
+
+        try (Connection connection = DbAccess
+                .connect()) {
+
+            if (connection != null) {
+
+                System.out.println("Verbindung zur Datenbank erfolgreich hergestellt!");
+
+            }
+
+        } catch (SQLException e) {
+
+            System.out.println("Fehler bei der Verbindung zur Datenbank: " + e.getMessage());
+
+        }
+
+    }
+
 }
