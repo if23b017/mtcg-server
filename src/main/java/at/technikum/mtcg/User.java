@@ -6,12 +6,12 @@ import java.sql.SQLException;
 import java.sql.ResultSet;
 
 public class User {
-    private final String username;
-    private final String password;
+    private final String Username;
+    private final String Password;
 
     public User(String username, String password) {
-        this.username = username;
-        this.password = password;
+        this.Username = username;
+        this.Password = password;
     }
 
     public boolean register() {
@@ -20,8 +20,8 @@ public class User {
         try (Connection conn = DbAccess.connect();
              PreparedStatement stmt = conn.prepareStatement(insertUserSQL)) {
 
-            stmt.setString(1, this.username);
-            stmt.setString(2, this.password);
+            stmt.setString(1, this.Username);
+            stmt.setString(2, this.Password);
 
             stmt.executeUpdate();
             System.out.println("Registrierung erfolgreich!");
@@ -39,8 +39,8 @@ public class User {
         try (Connection conn = DbAccess.connect();
              PreparedStatement stmt = conn.prepareStatement(selectUserSQL)) {
 
-            stmt.setString(1, this.username);
-            stmt.setString(2, this.password);
+            stmt.setString(1, this.Username);
+            stmt.setString(2, this.Password);
 
             ResultSet resultSet = stmt.executeQuery();
             if (resultSet.next()) {
@@ -58,7 +58,7 @@ public class User {
     }
 
     public static void main(String[] args) {
-        User newUser = new User("testuser2", "testpassword2");
+        User newUser = new User("testuser", "testpassword");
 
         boolean registrationSuccessful = newUser.register();
         if (registrationSuccessful) {
