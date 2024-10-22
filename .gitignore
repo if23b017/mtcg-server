@@ -12,6 +12,9 @@
 .idea/**/dictionaries
 .idea/**/shelf
 
+#Ignore .properties file with sensitive information
+src/main/resources/config.properties
+
 # AWS User-specific
 .idea/**/aws.xml
 
